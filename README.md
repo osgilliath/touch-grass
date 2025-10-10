@@ -12,5 +12,5 @@ _report.py_ program, parses that .json file and displays it in a neat format, fo
 - `platform`
 - `datetime`
 
-just run<br/>
+**just run**<br/>
 `pip install requirements.txt`
