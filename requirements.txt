@@ -1,7 +1,2 @@
-#libraries needed
-time
-json
-os
-platform
-datetime
 psutil
+pygetwindow
