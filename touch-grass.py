@@ -4,6 +4,8 @@ import os
 import platform
 from datetime import datetime
 import psutil
+import atexit
+import subprocess
 
 # Install with: pip install psutil pygetwindow
 try:
@@ -61,7 +63,18 @@ def log_usage(app, duration):
     save_logs(logs)
 
 
+def run_report():
+    print("\n🛑 Tracking stopped.")
+    print("📊 Generating report...")
+    result = subprocess.run(["python", "report.py"], capture_output=True, text=True)
+    print(result.stdout)
+    if result.stderr:
+        print("Errors:")
+        print(result.stderr)
+
+
 def main():
+    atexit.register(run_report)
     print("⏳ Tracking started... Press CTRL+C to stop.")
     prev_app = None
     start_time = time.time()
@@ -78,11 +91,7 @@ def main():
                 prev_app = app
                 start_time = time.time()
     except KeyboardInterrupt:
-        print("\n🛑 Tracking stopped.")
-        if prev_app:
-            duration = int(time.time() - start_time)
-            log_usage(prev_app, duration)
-            print(f"Final log: {duration}s on {prev_app}")
+        pass
 
 
 if __name__ == "__main__":

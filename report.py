@@ -31,7 +31,7 @@ def report(day=None):
         print(f"⚠️ No logs for {day}")
         return
 
-    print(f"\n📊 Usage Report for {day}")
+    print(f"\n Usage Report for {day}")
     print("-" * 40)
 
     total = 0
