@@ -11,12 +11,12 @@ import subprocess
 try:
     import pygetwindow as gw
 except ImportError:
-    print("⚠️ Please install pygetwindow: pip install pygetwindow")
+    print("Warning: Please install pygetwindow: pip install pygetwindow")
     exit(1)
 
 import os
 LOG_FILE = os.path.join(os.path.expanduser("~"), "Documents", "usage_log.json")
-print(f"📁 Logs will be saved at: {LOG_FILE}")
+print(f"Logs will be saved at: {LOG_FILE}")
 
 
 def get_active_app():
@@ -44,7 +44,7 @@ def load_logs():
 def save_logs(logs):
     with open(LOG_FILE, "w") as f:
         json.dump(logs, f, indent=4)
-    print(f"✅ Saved logs to {LOG_FILE}")
+    print(f"Saved logs to {LOG_FILE}")
 
 
 
@@ -64,8 +64,8 @@ def log_usage(app, duration):
 
 
 def run_report():
-    print("\n🛑 Tracking stopped.")
-    print("📊 Generating report...")
+    print("\nTracking stopped.")
+    print("Generating report...")
     result = subprocess.run(["python", "report.py"], capture_output=True, text=True)
     print(result.stdout)
     if result.stderr:
@@ -75,7 +75,7 @@ def run_report():
 
 def main():
     atexit.register(run_report)
-    print("⏳ Tracking started... Press CTRL+C to stop.")
+    print("Tracking started... Press CTRL+C to stop.")
     prev_app = None
     start_time = time.time()
 

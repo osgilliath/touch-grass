@@ -7,7 +7,7 @@ LOG_FILE = os.path.join(os.path.expanduser("~"), "Documents", "usage_log.json")
 
 def load_logs():
     if not os.path.exists(LOG_FILE):
-        print("⚠️ No log file found.")
+        print("Warning: No log file found.")
         return {}
     with open(LOG_FILE, "r") as f:
         return json.load(f)
@@ -28,7 +28,7 @@ def report(day=None):
         day = datetime.now().strftime("%Y-%m-%d")
 
     if day not in logs:
-        print(f"⚠️ No logs for {day}")
+        print(f"Warning: No logs for {day}")
         return
 
     print(f"\n Usage Report for {day}")
